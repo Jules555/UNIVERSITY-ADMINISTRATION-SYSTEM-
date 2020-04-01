@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"  href="css/bootstrap.css">
+
+    <!----------- custom css ----------->
+    <link rel="stylesheet" href="css/otherPageStyles.css">
+
+    <title>Registration | Create Account</title>
+</head>
+
+
+<body>
+
+    <div id="top-wrapper">  
+        <!-----------navigation bar starts--------------->
+
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+            <a class="navbar-brand" href="#"><img src="img/navbar-logo.png"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ml-auto">
+                
+                    <button class="nav-item nav-link btn btn-link btn-control"><a href="login.html">Sign In</a></button>
+                </div>
+            </div>
+
+        </nav>
+
+        <!------------ navigation bar ends ------------>
+    </div>
+
+
+    <!------------ section for registration starts ------------> 
+
+    <section class="box_outer-wrapper"> 
+
+        <div class="container">
+            <div class="register_box">
+                <div class="text-reveal">
+                    <h2>Registration</h2>
+                    <hr>
+                </div>
+                
+
+                <form id="form-info" class="form clearfix" method="post" action="includes/publish.php" >
+
+                    <div class="form-group">
+
+
+                        <label for="form-info-fnm"><h5>First Name</h5></label>
+                        <input type="text" id="form-info-fnm" class="form-control" name="std_fnm" 
+                         placeholder="Your First Name">
+                    </div> 
+
+                    <div class="form-group">
+
+                        <label for="form-info-lnm"><h5>Last Name</h5></label>
+                        <input type="text" id="form-info-lnm" class="form-control" name="std_lnm"
+                          placeholder="Your Last Name">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="form-info-email"><h5>Email</h5></label>
+                        <input type="Email" id="form-info-email" class="form-control" name="std_email"
+                        placeholder="Your Email">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="form-info-passport"><h5>Passport</h5></label>
+                        <input type="text" id="form-info-passport" class="form-control" name="std_passport" 
+                         placeholder="Your Passport Number">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="form-info-country"><h5>Nationality</h5></label>
+                        <input type="text" id="form-info-country" class="form-control" name="std_nationality" 
+                         placeholder="Your Country">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="form-info-pnber"><h5>Phone Number</h5></label>
+                        <input type="Tel" id="form-info-pnber" class="form-control" name="std_pnber" 
+                         placeholder="Your Phone Number" >
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="form-info-pwd"><h5>Password</h5></label>
+                        <input type="Password" id="form-info-pwd" class="form-control" name="std_pwd" 
+                         placeholder="Create a Password">
+
+                     </div>
+
+                    <div class="form-group">
+
+                         <h5> Gender</h5>
+
+                         <div class="form-check form-check-inline">
+                            <input type="radio"  id="form-info-gm" class="form-check-input" name="std_gender" value="M">
+                            <label class="form-check-label" for="form-info-gm"> Male </label>
+                         </div>
+
+                         <div class="form-check form-check-inline">
+                            <input type="radio" id="form-info-gf" class="form-check-input" name="std_gender" value="F">
+                            <label  class="form-check-label" for="form-info-gf"> Female </label>
+                         </div>
+
+                    </div>
+
+                     <div class="form-group clearfix">
+                        <button type="submit" name="submit" class="btn btn-primary ">Create Acount</button>
+                        <button type="reset" name="reset" class="btn float-right  ">Reset</button>
+                     </div>
+
+
+                </form>
+
+            </div>
+        </div>
+
+    </section>
+
+    <footer>
+
+        <div class="container">
+            <div class="footer-wrapper">
+                <span>&copy;Copyright 2020-01, All Rights Reserved </span>
+            </div>
+
+    </footer>
+
+    
+
+     <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="js/jQuery.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.js"></script>
+
+</body>
+</html>
