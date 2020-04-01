@@ -1,0 +1,411 @@
+/*-------------------------
+Web title: University Administration System
+Author: Umuhire Jules
+Default color: #000
+text color: #363636
+Body Font :  'Poppins', sans-serif; 16px;
+Headers	:  'Poppins', sans-serif;
+
+--------------------------- */
+
+
+/*------------------------
+General styles
+-------------------------- */
+html,
+body{
+    height: 100%;
+    font-family: 'poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+
+}
+
+
+/*------------------------
+.pre-loader
+-------------------------- */
+.pre-loader {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    position:fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+
+}
+#header_wrapper{
+    position: relative;
+    height: 100%;
+}
+#header_wrapper .outer-wrapper{
+    position: absolute;
+    height: 100%;
+    display: table;
+
+}
+
+
+
+#header_wrapper .inner-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#header_wrapper h1{
+    color: white;
+    font-size: 60px;
+    font-weight: 600;
+    margin: 16px 0px 70px 0px;
+    line-height: 80px;
+
+}
+
+
+
+.hero-title{
+    position: relative;
+    color: rgba(255,255,255,0);
+
+}
+.hero-title.reveal{
+    color: white;
+    transition-delay: .8s;
+}
+
+#header_wrapper h1 .definer.reveal {
+    color: rgb(255,215,0);
+}
+
+.hero-title:before {
+    background-color: white;
+    height: 100%;
+    position: absolute;
+    content: "";
+}
+
+/*----------------------
+animation for hero-title class
+---------------------------- */
+@keyframes animation_h1_bg_reveal_cover {
+    0%{
+        width: 0;
+        height: 0%;
+
+    }
+    100%{
+        width: 100%;
+        height: 100%;
+
+
+    }
+}
+
+@keyframes animation_h1_bg_reveal_uncover {
+    0%{
+        width: 100%;
+        height: 100%;
+    }
+    100%{
+        width: 0%;
+        height: 0%;
+    }
+}
+
+.hero-title.reveal:before {
+    animation: animation_h1_bg_reveal_cover .6s ease-out .5s forwards,
+animation_h1_bg_reveal_uncover 3s ease-out 2s forwards;
+
+}
+
+
+#header_wrapper h1 .definer:before {
+    background-color: yellow;
+}
+
+/*----------------
+figure icon in header class: icon wrapper
+ ------------------------*/
+.icon_wrapper{
+    color: white;
+    font-size: 40px;
+    font-weight: 600;
+    margin: 10px 0px 20px 10px;
+    position: relative;
+    text-align: center;
+
+
+
+
+}
+
+.icon_wrapper figure{
+    position: relative;
+    margin-right: 10px;
+    width: 60px;
+    height:60px;
+    background-color: rgba(255,255,255,.4);
+    border-radius: 100%;
+    display: inline-block;
+
+}
+
+.icon_wrapper figure i{
+    font-size: 30px;
+    margin-right: 10px;
+}
+.icon_wrapper:hover figure i {
+    color: yellow;
+}
+#rotating-text{
+    color: rgb(255,215,0);
+
+}
+
+/*-------------------------
+slider
+---------------------- */
+#slider {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    overflow: hidden;
+    filter: brightness(.6);
+
+
+
+
+}
+#slider img {
+    width: auto;
+    height:100%;
+}
+
+/*------------------
+navbar
+ ------------*/
+.navbar{
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 25px;
+    text-transform: uppercase;
+    transition: 2s ease;
+}
+.btn-control{
+    margin-left: 50px;
+    margin-top: -5px;
+}
+.btn-control a{
+
+    color:white;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: .4s ease;
+
+}
+.btn-control a:hover{
+    color: yellow;
+    text-decoration: none;
+}
+
+.navbar-brand img{
+    width:85%;
+    padding-left: 50px;
+}
+
+.nav-bg-black{
+    background-color: rgba(0,0,0,.8);
+}
+
+/*------------------
+section wrapper
+ ---------------*/
+.section_wrapper {
+    height: auto;
+    padding-top: 10px;
+    position: relative;
+}
+.section_title h2{
+    padding-top: 80px;
+    margin-bottom: 50px ;
+    font-size: 36px;
+    font-weight: 600;
+}
+/*----------------------
+about us section
+------------------------*/
+#about-us img{
+    width: 100%;
+    height: 100%;
+}
+#about-us a{
+    margin-top: 30px;
+    color: #2f3640;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 10px;
+    box-shadow: 10px 10px 10px black;
+}
+
+/*-----------------------
+events section
+-------------------- */
+.gallery {
+    position: relative;
+
+}
+.gallery-caption {
+    position: absolute;
+    color: white;
+    left: 0;
+    bottom: 0;
+    padding: 50px 30px;
+    z-index: 2;
+}
+
+.gallery h3{
+    font-size: 35px;
+    font-weight: 500;
+    line-height: 50px;
+    opacity: .85;
+}
+
+.gallery p {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 25px;
+
+}
+
+.event-image{
+    height: 500px;
+    overflow: hidden;
+}
+.event-image img {
+    display: block;
+    height: 100%;
+    transition: .8s;
+}
+.gallery a:hover .event-image img {
+
+    transform: scale(1.06);
+    filter:brightness(.4);
+
+}
+
+/*----------------------
+our team section
+--------------------- */
+#our-team{
+    background-color: rgba(0,0,0,.06);
+    padding-bottom: 100px;
+}
+.member{
+    text-align: center;
+}
+.member h4 {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    margin-bottom: 10px;
+}
+.member h5 {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    opacity: .6;
+}
+.member-image_wrapper {
+    display: inline-block;
+    width: 230px;
+    height: 230px;
+    border-radius: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.member-image img{
+    width: 100%;
+    height: auto;
+}
+
+.social-media{
+    background-color: rgba(0,0,0,.6);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: translateY(85%);
+    transition: .4s ease;
+    border-radius: 100%;
+    line-height: 330px;
+}
+.member:hover .social-media{
+    transform: translateY(0%);
+}
+
+.social-media i{
+    color: white;
+    font-size: 30px;
+    padding: 10px;
+    transition: .3s ease;
+
+}
+
+.social-media i:hover {
+    color: yellow;
+}
+.social-media a:hover {
+    text-decoration: none;
+}
+
+
+
+/*------------------
+contact
+ ---------------*/
+#contact{
+    background-color: rgba(0,0,0,.9);
+    color:white;
+}
+
+#contact a {
+    color: white;
+    font-size: 20px;
+}
+#contact address{
+    margin:15px 0px 40px 0px;
+    font-size: 18px;
+    font-weight:400 ;
+    line-height: 29px;
+}
+
+#contact a:hover{
+    text-decoration: none;
+    color: yellow;
+}
+#contact i {
+    font-size: 20px;
+}
+
+
+/*------------------
+footer wrapper
+ ---------------*/
+
+.footer-wrapper{
+    margin: 10px 0px;
+    text-align: center;
+    font-size: 15px;
+
+}
+
+
+
+
+
+
+
+
