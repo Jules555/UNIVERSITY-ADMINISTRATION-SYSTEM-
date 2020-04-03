@@ -1,0 +1,139 @@
+html,
+body{
+	
+	margin: 0;
+	padding:0;
+	font-family: sans-serif;
+}
+
+/*navigation bar*/
+.navbar{
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 25px;
+    text-transform: uppercase;
+    transition: 2s ease;
+}
+.btn-control{
+    margin-left: 50px;
+    margin-top: -5px;
+}
+
+.btn-control a{
+
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+	text-transform: uppercase;
+	transition: .4s ease;
+
+}
+.btn-control a:hover{
+    color: #b33939;
+    text-decoration: none;
+}
+
+.navbar-brand img{
+    width:85%;
+    padding-left: 50px;
+}
+
+#section_wrapper{
+	margin: 100px 10px;
+	
+}
+
+#section_wrapper i{
+		color: black;
+}
+
+#section_wrapper a h3{
+	color: black;
+	font-weight: 700;
+	font-size: 30px;
+}
+
+#section_wrapper a:hover{
+	text-decoration: none;
+}
+
+#section_wrapper a:hover i {
+	color: #0652DD;
+	filter: brightness(.7);
+	
+}
+#section_wrapper a:hover h3{
+	color: #0652DD;
+	filter: brightness(.6);
+	font-size: 32px;
+}
+
+.common h3 {
+	transition: .4s ease;
+	text-align: center;
+}
+.custom-circle{
+	height: 180px;
+	width: 180px;
+	border:15px solid #bdc3c7;
+	border-radius: 100%;
+	margin:auto;
+	transition: .8s ease;
+}
+.custom-circle i{
+	font-size: 70px;
+	margin-top: 35px;
+	margin-left: 35px;
+}
+.custom-circle:hover{
+	border:10px solid #3498db ;
+}
+.custom-circle:hover i{
+	font-size: 75px;
+}
+#personal-information{
+	margin: 50px;
+	display: none;
+}
+
+#personal-information caption {
+	text-align: center;
+}
+
+#personal-information td,th {
+	border: 1px solid black;
+	padding: 10px;
+
+}
+
+#course-table {
+	margin: 50px;
+	display: none;
+}
+
+#course-table caption {
+	text-align: center;
+}
+
+
+
+h2 {
+	font-weight: 600;
+	margin: 20px ;
+	border-bottom: 1px solid black;
+	display: inline-block;
+	color: black;
+}
+
+#result {
+	margin: 50px;
+	
+	
+}
+
+.footer-wrapper{
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 15px;
+
+}
