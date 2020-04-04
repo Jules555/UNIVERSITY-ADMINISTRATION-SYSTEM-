@@ -1,8 +1,9 @@
 # UNIVERSITY-ADMINISTRATION-SYSTEM
-### WEB APPLICATION FOR UNIVERSITY ADMINISTRATION 
-https://github.com/Jules555/UNIVERSITY-ADMINISTRATION-SYSTEM-/issues/1#issue-593792631
+### WEB APPLICATION FOR UNIVERSITY ADMINISTRATION
 
-https://user-images.githubusercontent.com/46833566/78424724-0d693680-76a2-11ea-9dc6-2dcea1ab4798.PNG
+Login Form
+
+![login](https://user-images.githubusercontent.com/46833566/78424724-0d693680-76a2-11ea-9dc6-2dcea1ab4798.PNG)
 
 Front-end using 
 * HTML
