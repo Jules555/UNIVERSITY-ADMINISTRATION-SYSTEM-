@@ -1,4 +1,5 @@
-<?php session_start(); 
+<?php 
+session_start(); 
 include_once 'includes/dbh.php';
 
 if(!isset($_SESSION['std_id'])){
@@ -56,7 +57,9 @@ else{
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.js"></script>
 
-   
+   <!---------custom js--------->
+
+   <script src="js/entryPanel.js"></script>
 
 
   </head>
@@ -157,6 +160,42 @@ else{
           <h2>Student Information</h2>
         </div>
 
+        <div class="update_info">
+         <span> <i class="fas fa-user-edit" ></i> Update My Info</span>
+        </div>
+
+        <div class="change-info hide">
+          <form class="form" method="post" action="includes/publish.php">
+            <div class="row">
+
+              <div class="col-sm-6 col-lg-3">
+                <div class="form-group">
+                  <input class="form-control" type="text" name="phone" placeholder="New Phone Number" >
+
+                </div>
+                
+              </div>
+
+              <div class="col-sm-6 col-lg-3 ">
+                <div class="form-group">
+                  <input class="form-control" type="email" name="email" placeholder="New Email" >
+
+                </div>
+              </div>
+
+              <div class="col-sm-12">
+                <div class="form-group">
+                <button type="submit" class="btn-success" name="update-info">SUBMIT</button>
+
+                </div>
+              </div>
+              
+
+            </div>
+          </form>
+
+        </div>
+
 
         <table style="border: 2px solid black; padding: 20px;">
 
@@ -174,7 +213,7 @@ else{
             
           </tr>
 
-           <tr>
+          <tr>
             <td><?php echo $id; ?></td>
             <td><?php echo $fname; ?></td>
             <td><?php echo $lname; ?></td>
@@ -199,70 +238,139 @@ else{
           <h2>Time Table</h2>
         </div>
 
+        <?php 
+        $sql="SELECT * FROM selected_course WHERE selected_course.student_id='".$id."'";
+        $query=mysqli_query($conn,$sql);
+       if(mysqli_num_rows($query)>0){?>
+        <table class="table" style="border: 2px solid black">
+          <caption>Class Schedule</caption>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Monday</th>
+              <th>Tuesday</th>
+              <th>Wednesday</th>
+              <th>Thursday</th>
+              <th>Friday</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php 
+            $realtime=array("8h30-10h00","10h30-12h00","14h30-16h00","16h20-17h50","19h30-21h00");
 
-        <table  class="table table-bordered table-striped " style="border: 2px solid black" >
+            $table_period=array("1st","2nd","3rd","4th","5th");
+            $table_days=array("Monday","Tuesday","Wednesday","Thursday","Friday");
+            for($i=0; $i<sizeof($table_period); $i++){?>
+              <tr>
+                <td><?php echo $realtime[$i] ?></td>
+                <?php 
+                for($k=0; $k<sizeof($table_days); $k++ ){ 
+                  $sql=" SELECT course_list.course_name
+                   FROM selected_course
+                  INNER JOIN offered_course ON offered_course.offer_id=selected_course.offer_id
+                  INNER JOIN course_list ON course_list.course_id= offered_course.course_id
+                  WHERE  student_id='".$id."' AND 
+                  offered_course.offer_day='".$table_days[$k]."' 
+                  AND offered_course.offer_time='$table_period[$i]'";
+                     
+                  $query=mysqli_query($conn,$sql);
+                  $result=mysqli_num_rows($query);
+                  if($result>0){
+                    while($row=mysqli_fetch_assoc($query)){
+                      $course=$row['course_name'];
+                      
+                    }?>
+                    <td><?php echo $course;?></td>
+                    <?php
+                  }
+                  else{?>
+                    <td> </td>
+                  <?php
+                  }
+                  ?>
+                  
+                <?php
+                }
+                ?>
+              </tr>
+            <?php 
+            }
+             ?>
+            
+            
+        
+          </tbody>
+
+
+        </table>
+
+
+        <table  class="table table-bordered table-striped "  >
           <caption>Course Table</caption>
           <thead>
 
           <tr>
-          <th></th>
-          <th>Monday</th>
-          <th>Tuesday</th>
-          <th>Wednesday</th>
-          <th>Thursday</th>
-          <th>Friday</th>
+          
+          <th>Course ID</th>
+          <th>Course Name</th>
+          <th>Credit</th>
+          <th>Starting Date</th>
+          <th>Ending Date</th>
           </tr>
           </thead>
           
           <tbody>
             <?php
-            function get_course(){
-            	global $conn;
-
-
-            	$sql= "SELECT * FROM course_info ";
-            	$result=mysqli_query($conn,$sql);
-
-            	while($row=mysqli_fetch_assoc($result)){
-            		$course[] = $row;
-            	}
-
-            	return $course;
-
-            }
-
-            $course_list=get_course();
-
-            foreach ($course_list as $time_table) {
-
-            	$time = $time_table['time'];
-              $mo = $time_table['monday'];
-             	$tu = $time_table['tuesday'];
-              $we = $time_table['wednesday'];
-              $th = $time_table['thursday'];
-              $fr = $time_table['friday'];
             
-            
+
+
+            	$sql= "SELECT selected_course.student_id, offered_course.*, course_list.course_name,course_list.credit 
+               FROM selected_course
+               INNER JOIN offered_course ON offered_course.offer_id=selected_course.offer_id 
+               INNER JOIN course_list ON course_list.course_id= offered_course.course_id
+                WHERE selected_course.student_id='".$id."' ";
+              $result=mysqli_query($conn,$sql);
+              $row_number=mysqli_num_rows($result);
+              if($row_number>0){
+                while($row=mysqli_fetch_assoc($result)){
+
+                  $course_id=$row['course_id'];
+                  $credit=$row['credit'];
+                  $course_name=$row['course_name'];
+
+                  $start = $row['starting_date'];
+                  $end = $row['ending_date'];
+                 // $course_name = $row['course_name'];
+                
+                
+                  ?>
+                  <tr>
+                  <td><?php echo $course_id; ?></td>
+                  <td><?php echo $course_name; ?></td>
+                  <td><?php echo $credit; ?></td>
+                  <td><?php echo $start; ?></td>
+                  <td><?php echo $end; ?></td>
+                  
+                  </tr>
+
+            <?php 
+                }
+              } 
+               
             ?>
-          <tr>
-          <td><?php echo $time; ?></td>
-          <td><?php echo $mo; ?></td>
-          <td><?php echo $tu; ?></td>
-          <td><?php echo $we; ?></td>
-          <td><?php echo $th; ?></td>
-          <td><?php echo $fr; ?></td>
-          </tr>
-
-      <?php } ?>
 
          </tbody>
 
-        
-
-
-
         </table>
 
+        <?php 
+       }
+       else{
+        echo "You haven't selected any course yet. <br>";
+        echo "To select course online click on the link below. <br>";
+        echo "<a href='select_course.php'>Click here to select courses</a><br><br>";
+        }
+        ?>
       </div>
       
       
@@ -283,9 +391,9 @@ else{
             <form class="form clearfix" method="post" action="entrypanel.php">
               <div class="row no-gutters">
 
-                <div class="col-md-4">
+                <div class="col-sm-7 col-md-5 col-lg-4">
 
-                  <label>Academic Year</label>
+                  <label>Academic Year: </label>
                   <select name="academic" required>
                     <option></option>
                     <option>2019-2020</option>
@@ -294,9 +402,9 @@ else{
 
                 </div>
 
-                 <div class="col-md-3">
+                 <div class="col-sm-3 col-md-3">
 
-                  <label>Term</label>
+                  <label>Term: </label>
                   <select name="term" required>
                     <option></option>
                     <option>1</option>
@@ -304,7 +412,7 @@ else{
                   </select>   
 
                 </div>
-                <div class="col-md-2 ">
+                <div class="col-sm-2 col-md-2 ">
                   <button type="submit" name="check_result" class="btn btn-success ">Check</button>
                 </div>
 
@@ -339,7 +447,7 @@ else{
 
                   if($rowNumbers>=1){?>
                     <h6 class=" text-info">Year: <?php echo $academic; ?> Term: <?php echo $term; ?></h6>
-                    <table class="">
+                    <table class="table table-dark table-bordered">
                       <caption class="text-center">Results for 
                         <?php 
                         $fname=strtolower($fname);
@@ -430,9 +538,6 @@ else{
 
   </footer>
     
- <!---------custom js--------->
-
-    <script src="js/entryPanel.js"></script>
-    
+     
   </body>
 </html>
