@@ -84,7 +84,7 @@ header{
 }
 .book-image{
     height: 300px;
-    width: 270px;
+    
     border: 1px solid black;
     border-radius: 10px;
     overflow: hidden;
@@ -133,12 +133,12 @@ header{
     font-size: 14px;
     border: 2px groove skyblue;
     border-radius: 5px;
-    
-    
+    text-align: center;    
 }
 #load-more a{
     font-weight: 600;
     transition: .5s ease;
+    
 
 }
 #load-more:hover a{
@@ -226,9 +226,115 @@ display:none;
     font-weight: 600;
 }
 
+#my-account{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+   
+}
+
+.hide{
+    display: none;
+}
+.show{
+    display: block;
+}
+.account_details{
+    background-color: white;
+    min-width: 65vh;
+    max-height: 55vh;
+    min-height: 40vh;
+    position: absolute;
+    top: 60px;
+    right: 170px;
+    color: black;
+    overflow-y: auto;
+}
+.custom-details{
+    margin: 20px 5px;
+    background-color: #eee;
+    border-radius: 10px;
+    padding-left: 5px;
+    
+    
+}.detail-descr{
+    width: 70%;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+.detail-descr p{
+    margin-bottom: 1px;
+    color: rgba(0,0,0,.7);
+}
+.detail-descr span{
+    font-weight: 600;
+}
+.detail-info{
+    color:orangered;
+    width: 20%;
+    text-align: center;
+    margin: 0px 10px;
+    bottom:25px;
+    display: inline-block;
+    position: relative;
+
+}
+.account-nav{
+    color:blue;
+    width: 100%;
+    margin-top: 5px;
+    
+}
+.account-nav a{
+    font-weight: 600;
+    font-size: 18px;
+}
+.account-nav a:hover{
+    background-color: #999;
+    text-decoration: none;
+    padding: 3px;
+    border-radius: 8px;
+}
+.account-owned{
+    margin-left: 20px;
+    width: 40%;
+    display: inline-block;
+    text-align: center;
+    
+}
+.account-library{
+    width: 40%;
+    display: inline-block;
+    text-align: center;
+    
+}
 .footer-wrapper{
     margin-bottom: 10px;
     text-align: center;
     font-size: 15px;
+    
+
+}
+@media(min-width: 993px) and (max-width: 1200px){
+  .book-title{
+      height: 65px;
+      overflow: hidden;
+  }
+
+}
+@media(min-width:768px) and (max-width:992px){
+   
+}
+@media(min-width:576px) and (max-width:767px){
+    
+}
+@media(max-width:575px){
+    .book-wrapper{
+        width: 70%;
+        margin: auto;
+    }
 
 }
