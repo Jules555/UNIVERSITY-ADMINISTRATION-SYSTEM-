@@ -54,7 +54,9 @@ if(!isset($_SESSION['std_fname'])){
                 <a class="nav-item nav-link">
                     Welcome <?php echo $_SESSION['std_fname']; ?>
                 </a>
-                <a class="nav-item nav-link" href="#" ><i class="fas fa-user" > My Account</i> </a>
+                <a class="nav-item nav-link" href="#" id="my_account_action" >
+                    <i class="fas fa-user-circle" > My Account</i> 
+                </a>
                 <button class="nav-item nav-link btn btn-link btn-control">
                     <a href="includes/logOut.php">Sign Out</a>
                 </button>
@@ -145,6 +147,104 @@ if(isset($_GET['category'])){
                 
         </div>
     </div>
+
+    
+<div id= "my-account" class="hide">
+    <div class="account_details">
+        
+        <div class="account-nav">
+            <div class="account-owned">
+                <a href="#">OWNED</a>
+            </div>
+            <div class="account-library">
+                <a href="#">LIBRARY</a>
+            </div>
+
+        </div>
+        
+        <?php 
+        $std_id=$_SESSION['std_id'];
+        $sql="SELECT book_order.*, books.book_name, books.book_type FROM book_order 
+        INNER JOIN books ON books.bookId=book_order.bookId
+        WHERE book_order.student_id='".$std_id."' 
+        AND book_order.order_status='borrowed'";
+        $query=mysqli_query($conn,$sql);
+
+        if(mysqli_num_rows($query)==0){?>
+
+            <div class="custom-details owned-books" >
+                You have no books borrowed currently
+            </div>
+        <?php
+        }
+
+        while($row=mysqli_fetch_assoc($query)){
+            $book_name=$row['book_name'];
+            $category=$row['book_type'];
+            $order_date=$row['order_date'];
+        
+        ?>
+
+        <div class="custom-details owned-books ">
+         
+            <div class="detail-descr ">
+                <span><?php echo $book_name; ?> </span>
+                <p style="color:rgb(0,0,0)"><?php echo $category; ?> Book</p> 
+                <p>Ordered On: <?php echo $order_date; ?> </p>       
+            </div>
+
+            <div class="detail-info ">
+                due
+            </div>
+
+        </div>
+        <?php
+        }
+        $sql_library="SELECT book_order.*, books.book_name, books.book_type FROM book_order 
+        INNER JOIN books ON books.bookId=book_order.bookId
+        WHERE book_order.student_id='".$std_id."' ORDER BY book_order.order_date DESC ";
+        $query_library=mysqli_query($conn,$sql_library);
+
+        if(mysqli_num_rows($query)==0){?>
+
+            <div class="custom-details books-history hide" >
+                You have never borrowed any books from library
+            </div>
+        <?php
+        }
+        while($row_library=mysqli_fetch_assoc($query_library)){
+            $name=$row_library['book_name'];
+            $type=$row_library['book_type'];
+            $order_date=$row_library['order_date'];
+            $return_date=$row_library['return_date'];
+            $order_status=$row_library['order_status'];
+            ?>
+        <div class="custom-details books-history hide">
+         
+            <div class="detail-descr ">
+                <span><?php echo $name; ?> </span>
+                <p style="color:rgb(0,0,0)"><?php echo $type; ?> Book</p> 
+                <p>Ordered On: <?php echo $order_date; ?> </p> 
+                <p>Return date: <?php echo $return_date; ?> </p>      
+            </div>
+
+            <div class="detail-info ">
+                <?php echo $order_status; ?>
+            </div>
+
+        </div>
+        
+        <?php
+        }
+
+        ?>
+
+
+
+    </div>
+
+</div>
+
 
 <?php
 }
