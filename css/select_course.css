@@ -1,0 +1,16 @@
+body{
+    background-color: #2980b9;
+    color: white;
+}
+a{
+    color: black;
+}
+a:hover{
+    color: yellow;
+}
+form h4,h5{
+    color: black;
+}
+.title{
+    font-size: 20px;
+}
