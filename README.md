@@ -15,6 +15,10 @@ School Library
 
 ![library](https://user-images.githubusercontent.com/46833566/79689097-33d3c800-8285-11ea-9e5c-2dfab5b18a37.PNG)
 
+Admin Dashboard
+
+![Screenshot (15)](https://user-images.githubusercontent.com/46833566/79689183-b2c90080-8285-11ea-91d0-75b750e8cd4c.png)
+
 Front-end using 
 * HTML
 * JAVASCRIPT
