@@ -35,4 +35,9 @@ This project is to be used by schools. Schools will have some admins to controll
 * VIEW COURSE SCHEDULE
 * View Exam Results
 * LIBRARY: student can borrow books from the library.
-#### WHAT ADMINS CAN DO
+#### WHAT ADMINS CAN DO (Manage the whole system)
+* add or delete student
+* add or delete course
+* add or delete books in library
+* publish students results
+* manage student's order (cancel or approve)
